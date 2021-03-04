@@ -1,0 +1,51 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    env_file:
+      - packages/server/.database.${NODE_ENV:-local}.env
+    # volumes:
+    #    - postgres:/data/postgres
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    networks:
+      - postgres
+    restart: unless-stopped
+  
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    env_file:
+      - packages/server/.database.local.env
+    volumes:
+       - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  graphql_api:
+    container_name: graphql_api
+    build:
+      context: packages/server
+    # env_file:
+      #   - packages/server/.database.${NODE_ENV}.env
+    ports:
+      - '3000:3000'
+    networks:
+      - postgres
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:
+    pgadmin:
+    graphql_api:

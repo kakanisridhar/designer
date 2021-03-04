@@ -1,0 +1,12 @@
+# Tests
+/coverage
+/.nyc_output
+
+# Generated graphql schema
+schema.gql
+
+# compodocs
+docs
+
+# env
+.database.local.env

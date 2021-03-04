@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": "src",
+    "paths": {
+      "@server-scripts/*": ["../scripts/*"],
+      "@app-scripts/*": ["../../../scripts/*"]
+    },
+    "esModuleInterop": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "plugins": [
+      { "transform": "ts-auto-mock/transformer", "cacheBetweenTests": false }
+    ]
+  },
+  "exclude": [
+    "node_modules/*",
+    "dist/*"
+  ],
+  "include": ["src/**/*", "scripts"]
+}

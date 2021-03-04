@@ -1,0 +1,15 @@
+{
+  "name": "@nestjs-graphql-react/common",
+  "version": "0.0.0",
+  "description": "common files like enum, types, helpers",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "install": "tsc",
+    "dev": "tsc",
+    "build": "tsc",
+    "lint": "eslint \"{src}/**/*.ts\" --fix"
+  },
+  "devDependencies": {}
+}
